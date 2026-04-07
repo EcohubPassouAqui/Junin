@@ -52,8 +52,3 @@ npx serve .
 ## Regiao de Atendimento
 
 Entrega gratuita em **Maringa, Parana**. Pedidos realizados via WhatsApp.
-
-## Contato
-
-- **WhatsApp** — (44) 9966-3436
-- **Instagram** — [@juninshop](https://instagram.com/juninshop)
