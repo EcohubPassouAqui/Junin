@@ -56,7 +56,7 @@
                         <a href="#produtos" class="btn-act btn-primary-new">
                             <i class="fa-solid fa-fire"></i> Ver Sabores
                         </a>
-                        <a href="https://wa.me/554499663436?text=Olá! Vim pelo site e quero um pod Ignite V80!"
+                        <a href="https://wa.me/5511999999999?text=Olá! Vim pelo site e quero um pod Ignite V80!"
                            target="_blank" rel="noopener noreferrer"
                            class="btn-act btn-act-secondary">
                             <i class="fa-brands fa-whatsapp"></i> Pedir Agora
@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <div class="hero-globe" data-animate>
+                <div class="hero-globe">
                     <!-- #globeCanvas injetado via JS -->
                     <div class="globe-delivery-card">
                         <i class="fa-solid fa-location-dot"></i>
@@ -107,21 +107,13 @@
                     <p class="prod-subtitle-new">8000 puffs — 12 sabores — entrega grátis em Maringá</p>
                 </div>
 
-                <!-- BARRA DE ABAS -->
-                <div class="prod-tab-bar" id="prodTabBar">
-                    <button class="prod-tab active" data-panel="panel-produto">
-                        <i class="fa-solid fa-box-open"></i> Produto
-                    </button>
-                    <button class="prod-tab" data-panel="panel-ofertas">
-                        <i class="fa-solid fa-tags"></i> Ofertas
-                    </button>
-                    <button class="prod-tab" data-panel="panel-specs">
-                        <i class="fa-solid fa-list-check"></i> Detalhes
-                    </button>
-                </div>
-
-                <!-- PAINEL: Produto -->
-                <div class="prod-tab-panel active" id="panel-produto">
+                <!-- ====== SECAO: PRODUTO ====== -->
+                <div class="prod-section" id="sectionProduto">
+                    <div class="prod-section-header">
+                        <span class="prod-section-icon"><i class="fa-solid fa-box-open"></i></span>
+                        <h3 class="prod-section-title">Produto</h3>
+                        <span class="prod-section-line"></span>
+                    </div>
                     <div class="prod-grid">
                         <div class="prod-card-main">
                             <div class="prod-showcase">
@@ -135,6 +127,12 @@
                                 <strong id="pfName">Acai Ice</strong>
                                 <span class="pf-tag" id="pfTag">Gelado · Frutado</span>
                             </div>
+                            <p class="prod-desc">
+                                O Ignite V80 é o novo pod descartável de alta performance com até
+                                <strong>8000 tragadas</strong>, <strong>18mL</strong> de e-liquid e
+                                <strong>50mg</strong> de nicotina salts. Bateria de 650mAh com recarga
+                                USB-C — carrega em minutos, dura o dia todo.
+                            </p>
                             <div class="prod-quick-stats">
                                 <div class="pq-stat"><span class="pq-val">8000</span><span class="pq-lbl">Puffs</span></div>
                                 <div class="pq-stat"><span class="pq-val">18mL</span><span class="pq-lbl">Líquido</span></div>
@@ -154,20 +152,22 @@
                     </div>
                 </div>
 
-                <!-- PAINEL: Ofertas -->
-                <div class="prod-tab-panel" id="panel-ofertas">
-                    <div class="offers-section">
-                        <div class="offers-label-line">
-                            <span class="ofl-dot"></span>
-                            <span class="ofl-text">Ofertas</span>
-                        </div>
+                <!-- ====== SECAO: OFERTAS ====== -->
+                <div class="prod-section" id="sectionOfertas">
+                    <div class="prod-section-header">
+                        <span class="prod-section-icon"><i class="fa-solid fa-tags"></i></span>
+                        <h3 class="prod-section-title">Ofertas</h3>
+                        <span class="prod-section-line"></span>
+                    </div>
+                    <div class="offers-section-new">
                         <div class="offers-grid-new">
                             <div class="of-card">
+                                <div class="of-icon"><i class="fa-solid fa-fire"></i></div>
                                 <div class="of-qty">1 unidade</div>
                                 <div class="of-name">Unitário</div>
                                 <div class="of-price">
                                     <span class="of-val">R$90</span>
-                                    <span class="of-unit">por unidade</span>
+                                    <span class="of-unit">/unidade</span>
                                 </div>
                                 <div class="of-desc">Escolha qualquer sabor</div>
                                 <button class="of-buy acquire-btn" data-qty="1">
@@ -176,10 +176,11 @@
                             </div>
                             <div class="of-card of-card-best">
                                 <div class="of-best-ribbon">melhor oferta</div>
+                                <div class="of-icon"><i class="fa-solid fa-crown"></i></div>
                                 <div class="of-qty">2 unidades</div>
                                 <div class="of-name">Combo Duplo</div>
                                 <div class="of-price">
-                                    <span class="of-val gold">R$170</span>
+                                    <span class="of-val">R$170</span>
                                     <span class="of-unit">2 unidades</span>
                                 </div>
                                 <div class="of-desc">Sabores diferentes à escolha</div>
@@ -192,11 +193,16 @@
                     </div>
                 </div>
 
-                <!-- PAINEL: Specs + Entrega -->
-                <div class="prod-tab-panel" id="panel-specs">
+                <!-- ====== SECAO: DETALHES ====== -->
+                <div class="prod-section" id="sectionDetalhes">
+                    <div class="prod-section-header">
+                        <span class="prod-section-icon"><i class="fa-solid fa-list-check"></i></span>
+                        <h3 class="prod-section-title">Detalhes &amp; Entrega</h3>
+                        <span class="prod-section-line"></span>
+                    </div>
                     <div class="specs-delivery-row">
                         <div class="sd-card">
-                            <div class="sd-title"><i class="fa-solid fa-gauge-high"></i> Especificações</div>
+                            <div class="sd-title"><i class="fa-solid fa-gauge-high"></i> Especificações Técnicas</div>
                             <div class="sd-grid">
                                 <div class="sd-item"><i class="fa-solid fa-wind"></i><span><strong>8000</strong> Puffs</span></div>
                                 <div class="sd-item"><i class="fa-solid fa-droplet"></i><span><strong>18mL</strong> Líquido</span></div>
@@ -205,12 +211,18 @@
                                 <div class="sd-item"><i class="fa-solid fa-plug"></i><span><strong>USB-C</strong> Recarga</span></div>
                                 <div class="sd-item"><i class="fa-solid fa-gears"></i><span><strong>Mesh</strong> Coil Duplo</span></div>
                             </div>
+                            <div class="sd-detail-list">
+                                <div class="sd-detail"><i class="fa-solid fa-check"></i> Dispositivo recarregável, não reutilizável</div>
+                                <div class="sd-detail"><i class="fa-solid fa-check"></i> Resistor em mesh de 1.0Ω para sabor puro</div>
+                                <div class="sd-detail"><i class="fa-solid fa-check"></i> Ativação por sopro — sem botões</div>
+                                <div class="sd-detail"><i class="fa-solid fa-check"></i> Bateria de 650mAh com carregamento rápido USB-C</div>
+                            </div>
                         </div>
                         <div class="sd-card sd-delivery">
                             <div class="sd-title"><i class="fa-solid fa-truck-fast"></i> Entrega</div>
                             <div class="del-content">
                                 <div class="del-main">
-                                    <i class="fa-solid fa-truck-fast" style="font-size:28px;color:#22c55e"></i>
+                                    <i class="fa-solid fa-truck-fast"></i>
                                     <div>
                                         <div class="del-main-text">Entrega Grátis em Maringá</div>
                                         <div class="del-main-sub">Seg a Dom — 9h às 22h</div>
@@ -220,6 +232,10 @@
                                     <span class="del-badge"><i class="fa-solid fa-map-pin"></i> Maringá / PR</span>
                                     <span class="del-badge"><i class="fa-solid fa-clock"></i> Rápida</span>
                                     <span class="del-badge"><i class="fa-solid fa-shield-halved"></i> Segura</span>
+                                </div>
+                                <div class="del-note">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    <span>Entregamos na sua porta em até 40 minutos após confirmação do pedido.</span>
                                 </div>
                             </div>
                         </div>
@@ -247,8 +263,8 @@
                 <div class="footer-links">
                     <h4>Redes</h4>
                     <ul>
-                        <li><a href="https://wa.me/554499663436" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
-                        <li><a href="https://instagram.com/juninshop" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://wa.me/5511999999999" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://instagram.com/rip_sheldoohz" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
                     </ul>
                 </div>
             </div>
