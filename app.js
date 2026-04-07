@@ -1,24 +1,23 @@
-/* =====================================================
-   JUNIN - JAVASCRIPT
-   ===================================================== */
 (function () {
   'use strict';
 
-  // Utilitários globais
   var PHONE = '5511999999999';
+  var isMobile = (function () {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    var touch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    var uaMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua);
+    var small = window.innerWidth < 769;
+    return uaMobile || (touch && small);
+  })();
 
-  function col(c, a) {
-    return 'rgba(' + c + ',' + a + ')';
-  }
+  function col(c, a) { return 'rgba(' + c + ',' + a + ')'; }
 
   function ptInPoly(x, y, poly) {
     var ins = false;
     for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
       var xi = poly[i][0], yi = poly[i][1];
       var xj = poly[j][0], yj = poly[j][1];
-      if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) {
-        ins = !ins;
-      }
+      if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) { ins = !ins; }
     }
     return ins;
   }
@@ -28,103 +27,70 @@
   }
 
   function init() {
-
-    // 1. CANVAS — Fundo com grid e partículas
-    initBackground();
-
-    // 2. GLOBO
-    initGlobe();
-
-    // 3. FLAVORS
-    initFlavors();
-
-    // 4. NAVBAR
     initNavbar();
-
-    // 5. BOTÕES DE AQUISIÇÃO
+    initFlavors();
     initAcquireButtons();
-
-    // 6. COOKIES
     initCookies();
-
-    // 7. ANIMAÇÕES DE SCROLL
     initScrollAnimations();
+    if (!isMobile) {
+      initBackground();
+      initGlobe();
+    }
   }
 
-
-  // 1. FUNDO — Grid + Partículas
+  // BACKGROUND — Grid
   function initBackground() {
     var wrap = document.querySelector('.fundo');
     if (!wrap) return;
-
     var gC = document.getElementById('gridCanvas');
-    var aC = document.getElementById('particlesCanvas');
-    if (!gC || !aC) return;
-
+    if (!gC) return;
     var gx = gC.getContext('2d');
-    var ax = aC.getContext('2d');
     var CELL = 50;
 
     var orbDefs = [
       { x: 0.2, y: 0.3, c: '245,158,11', s: 300 },
-      { x: 0.8, y: 0.7, c: '6,182,212',  s: 250 },
+      { x: 0.8, y: 0.7, c: '6,182,212', s: 250 },
       { x: 0.5, y: 0.5, c: '139,92,246', s: 280 },
-      { x: 0.1, y: 0.8, c: '34,197,94',  s: 220 }
+      { x: 0.1, y: 0.8, c: '34,197,94', s: 220 }
     ];
-
     var orbs = [];
-    var pts  = [];
+    var pts = [];
     var lastGridT = 0;
 
     function resize() {
       var w = wrap.offsetWidth;
       var h = Math.max(wrap.offsetHeight, window.innerHeight);
-      gC.width = aC.width = w;
-      gC.height = aC.height = h;
+      gC.width = w;
+      gC.height = h;
       orbs = orbDefs.map(function (o) {
         return {
           x: o.x * w, y: o.y * h,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.2,
-          c: o.c, s: o.s,
-          phase: Math.random() * Math.PI * 2
+          vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.2,
+          c: o.c, s: o.s, phase: Math.random() * Math.PI * 2
         };
       });
-      drawGrid();
-      seedParticles();
+      drawGrid(); seedParticles();
     }
 
     function drawGrid() {
       var W = gC.width, H = gC.height;
-      gx.clearRect(0, 0, W, H);
-      gx.strokeStyle = 'rgba(255,255,255,0.025)';
-      gx.lineWidth = 0.5;
-      for (var x = 0; x <= W; x += CELL) {
-        gx.beginPath(); gx.moveTo(x, 0); gx.lineTo(x, H); gx.stroke();
-      }
-      for (var y = 0; y <= H; y += CELL) {
-        gx.beginPath(); gx.moveTo(0, y); gx.lineTo(W, y); gx.stroke();
-      }
+      gx.clearRect(0, 0, W, H); gx.strokeStyle = 'rgba(255,255,255,0.025)'; gx.lineWidth = 0.5;
+      for (var x = 0; x <= W; x += CELL) { gx.beginPath(); gx.moveTo(x, 0); gx.lineTo(x, H); gx.stroke(); }
+      for (var y = 0; y <= H; y += CELL) { gx.beginPath(); gx.moveTo(0, y); gx.lineTo(W, y); gx.stroke(); }
     }
 
     function seedParticles() {
-      var W = aC.width, H = aC.height;
+      var W = gC.width, H = gC.height;
       var COUNT = Math.max(80, Math.floor(W * H / 8000));
       var colorSplit = [0.18, 0.32, 0.42];
       pts = [];
       for (var i = 0; i < COUNT; i++) {
         var r = Math.random();
-        var cat = r < colorSplit[0] ? 'amber'
-                : r < colorSplit[1] ? 'teal'
-                : r < colorSplit[2] ? 'green'
-                : 'white';
+        var cat = r < colorSplit[0] ? 'amber' : r < colorSplit[1] ? 'teal' : r < colorSplit[2] ? 'green' : 'white';
         pts.push({
           x: Math.random() * W, y: Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          r: Math.random() * 1.5 + 0.5,
-          c: cat,
-          pulse: Math.random() * Math.PI * 2
+          vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 1.5 + 0.5, c: cat, pulse: Math.random() * Math.PI * 2
         });
       }
     }
@@ -133,85 +99,54 @@
 
     function loop(now) {
       now = now || 0;
-      var W = aC.width, H = aC.height;
-
-      if (now - lastGridT > 2000) {
-        drawGrid();
-        lastGridT = now;
-      }
-
+      var W = gC.width, H = gC.height, ax = gC.getContext('2d');
+      if (now - lastGridT > 2000) { drawGrid(); lastGridT = now; }
       ax.clearRect(0, 0, W, H);
 
-      // Orbs ambiente
       for (var o = 0; o < orbs.length; o++) {
         var ob = orbs[o];
-        ob.x += ob.vx; ob.y += ob.vy;
-        ob.phase += 0.008;
+        ob.x += ob.vx; ob.y += ob.vy; ob.phase += 0.008;
         if (ob.x < -ob.s) ob.x = W + ob.s;
         if (ob.x > W + ob.s) ob.x = -ob.s;
         if (ob.y < -ob.s) ob.y = H + ob.s;
         if (ob.y > H + ob.s) ob.y = -ob.s;
         var alpha = 0.018 + Math.sin(ob.phase) * 0.008;
         var og = ax.createRadialGradient(ob.x, ob.y, 0, ob.x, ob.y, ob.s);
-        og.addColorStop(0, col(ob.c, alpha));
-        og.addColorStop(1, col(ob.c, 0));
+        og.addColorStop(0, col(ob.c, alpha)); og.addColorStop(1, col(ob.c, 0));
         ax.fillStyle = og;
         ax.beginPath(); ax.arc(ob.x, ob.y, ob.s, 0, Math.PI * 2); ax.fill();
       }
 
-      // Linhas de conexão
       for (var i = 0; i < pts.length; i++) {
         for (var j = i + 1; j < pts.length; j++) {
-          var dx = pts[i].x - pts[j].x;
-          var dy = pts[i].y - pts[j].y;
-          var d  = Math.sqrt(dx * dx + dy * dy);
+          var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+          var d = Math.sqrt(dx * dx + dy * dy);
           if (d < 160) {
             var a = (1 - d / 160) * 0.28;
-            var lineColor;
-            if (pts[i].c !== 'white') {
-              var cSame = pts[i].c === pts[j].c ? COLOR_MAP[pts[i].c] : '255,255,255';
-              lineColor = col(cSame || '255,255,255', a);
-            } else if (pts[j].c !== 'white') {
-              lineColor = col(COLOR_MAP[pts[j].c] || '255,255,255', a);
-            } else {
-              lineColor = col('255,255,255', a);
-            }
-            ax.beginPath();
-            ax.moveTo(pts[i].x, pts[i].y);
-            ax.lineTo(pts[j].x, pts[j].y);
-            ax.strokeStyle = lineColor;
-            ax.lineWidth = 0.5;
-            ax.stroke();
+            var cSame = pts[i].c !== 'white' ? (pts[i].c === pts[j].c ? COLOR_MAP[pts[i].c] : '255,255,255') : (pts[j].c !== 'white' ? COLOR_MAP[pts[j].c] : '255,255,255');
+            ax.beginPath(); ax.moveTo(pts[i].x, pts[i].y); ax.lineTo(pts[j].x, pts[j].y);
+            ax.strokeStyle = col(cSame, a); ax.lineWidth = 0.5; ax.stroke();
           }
         }
       }
 
-      // Pontos + glow
       for (var k = 0; k < pts.length; k++) {
         var p = pts[k];
         p.pulse += 0.018;
         var ps = 1 + Math.sin(p.pulse) * 0.35;
-
         if (p.c !== 'white') {
-          var gc = COLOR_MAP[p.c];
-          var gSize = 14 * ps;
+          var gc = COLOR_MAP[p.c], gSize = 14 * ps;
           var gl = ax.createRadialGradient(p.x, p.y, 0, p.x, p.y, gSize);
-          gl.addColorStop(0,   col(gc, 0.18));
-          gl.addColorStop(0.5, col(gc, 0.06));
-          gl.addColorStop(1,   'rgba(0,0,0,0)');
-          ax.fillStyle = gl;
-          ax.beginPath(); ax.arc(p.x, p.y, gSize, 0, Math.PI * 2); ax.fill();
+          gl.addColorStop(0, col(gc, 0.18)); gl.addColorStop(0.5, col(gc, 0.06)); gl.addColorStop(1, 'rgba(0,0,0,0)');
+          ax.fillStyle = gl; ax.beginPath(); ax.arc(p.x, p.y, gSize, 0, Math.PI * 2); ax.fill();
         }
-
         ax.beginPath(); ax.arc(p.x, p.y, p.r * ps, 0, Math.PI * 2);
         ax.fillStyle = p.c === 'white' ? 'rgba(255,255,255,.5)' : 'rgba(255,255,255,.9)';
         ax.fill();
-
         p.x += p.vx; p.y += p.vy;
         if (p.x < 0 || p.x > W) p.vx *= -1;
         if (p.y < 0 || p.y > H) p.vy *= -1;
       }
-
       requestAnimationFrame(loop);
     }
 
@@ -219,8 +154,7 @@
     requestAnimationFrame(function () { resize(); loop(); });
   }
 
-
-  // 2. GLOBO TERRA
+  // FLAVORS
   function initGlobe() {
     var host = document.querySelector('.hero-globe');
     if (!host) return;
@@ -230,7 +164,7 @@
     var canvas = document.createElement('canvas');
     canvas.id = 'globeCanvas';
     canvas.width = canvas.height = size;
-    canvas.style.cssText = 'display:block;margin:0 auto';
+    canvas.style.cssText = 'display:block;margin:0 auto;width:100%;height:100%';
     host.insertBefore(canvas, host.firstChild);
 
     var ctx = canvas.getContext('2d');
@@ -591,7 +525,6 @@
   }
 
 
-  // 3. FLAVORS
   function initFlavors() {
     var flavors = [
       { name: 'Acai Ice',          tag: 'Gelado · Frutado',       cat: 'frutado',   icon: 'fa-solid fa-lemon'       },
@@ -609,33 +542,23 @@
     ];
 
     var catIcons = {
-      gelado:    '<i class="fa-solid fa-snowflake"></i>',
-      frutado:   '<i class="fa-solid fa-lemon"></i>',
-      mentolado: '<i class="fa-solid fa-wind"></i>',
-      tropical:  '<i class="fa-solid fa-sun"></i>'
+      gelado: '<i class="fa-solid fa-snowflake"></i>', frutado: '<i class="fa-solid fa-lemon"></i>',
+      mentolado: '<i class="fa-solid fa-wind"></i>', tropical: '<i class="fa-solid fa-sun"></i>'
     };
-
     var catColors = {
-      gelado:    '#06b6d4',
-      frutado:   '#f59e0b',
-      mentolado: '#3b82f6',
-      tropical:  '#22c55e'
+      gelado: '#06b6d4', frutado: '#f59e0b', mentolado: '#3b82f6', tropical: '#22c55e'
     };
 
-    var cur = 0;
-    var activeCat = 'all';
-
-    var fwrap         = document.getElementById('fwrap');
-    var pfName        = document.getElementById('pfName');
-    var pfTag         = document.getElementById('pfTag');
-    var pfDot         = document.getElementById('pfDot');
-    var pfHint        = document.getElementById('pcsHint');
+    var cur = 0, activeCat = 'all';
+    var fwrap = document.getElementById('fwrap');
+    var pfName = document.getElementById('pfName');
+    var pfTag = document.getElementById('pfTag');
+    var pfDot = document.getElementById('pfDot');
+    var pfHint = document.getElementById('pcsHint');
     var prodAcquireBtn = document.getElementById('prodAcquireBtn');
 
-    // Barra de categorias
     var catBar = document.createElement('div');
     catBar.className = 'cat-filter-bar';
-
     var allBtn = document.createElement('button');
     allBtn.className = 'cat-filter active';
     allBtn.innerHTML = '<span>Todos</span>';
@@ -650,20 +573,15 @@
       catBar.appendChild(btn);
     });
 
-    if (fwrap && fwrap.parentNode) {
-      fwrap.parentNode.insertBefore(catBar, fwrap);
-    }
+    if (fwrap && fwrap.parentNode) fwrap.parentNode.insertBefore(catBar, fwrap);
 
-    // Botões de sabor
     if (fwrap) {
       flavors.forEach(function (f, i) {
         var b = document.createElement('button');
         b.className = 'fflavor' + (i === 0 ? ' active' : '');
         b.setAttribute('data-cat', f.cat);
         b.setAttribute('data-idx', i);
-        b.innerHTML =
-          '<span class="fflavor-icon"><i class="' + f.icon + '"></i></span>' +
-          '<span class="fflavor-name">' + f.name + '</span>';
+        b.innerHTML = '<span class="fflavor-icon"><i class="' + f.icon + '"></i></span><span class="fflavor-name">' + f.name + '</span>';
         b.addEventListener('click', function () { setFlavor(i); });
         fwrap.appendChild(b);
       });
@@ -686,7 +604,7 @@
       });
       var curBtn = fwrap.querySelector('.fflavor[data-idx="' + cur + '"]');
       if (curBtn && curBtn.style.display === 'none') {
-        var firstVisible = fwrap.querySelector('.fflavor:not([style*="none"])');
+        var firstVisible = fwrap.querySelector('.fflavor:not([style*="display: none"])');
         if (firstVisible) {
           var idx = parseInt(firstVisible.getAttribute('data-idx'));
           if (!isNaN(idx)) setFlavor(idx);
@@ -707,82 +625,70 @@
 
     function setFlavor(i) {
       cur = i;
-      var f  = flavors[i];
-      var cc = catColors[f.cat];
-
+      var f = flavors[i], cc = catColors[f.cat];
       if (pfName) pfName.textContent = f.name;
-      if (pfTag)  {
-        pfTag.textContent = f.tag;
-        pfTag.style.color = cc;
-      }
-      if (pfDot) {
-        pfDot.style.background = cc;
-        pfDot.style.boxShadow  = '0 0 10px ' + cc + ', 0 0 20px ' + cc;
-      }
+      if (pfTag) { pfTag.textContent = f.tag; pfTag.style.color = cc; }
+      if (pfDot) { pfDot.style.background = cc; pfDot.style.boxShadow = '0 0 10px ' + cc + ', 0 0 20px ' + cc; }
       if (pfHint) pfHint.style.opacity = '0';
-
       var img = document.getElementById('prodImg');
       if (img) {
-        img.style.transform = 'scale(0.88) rotate(-3deg)';
-        img.style.opacity   = '0.6';
-        setTimeout(function () {
-          img.style.transform = '';
-          img.style.opacity   = '';
-        }, 280);
+        img.style.transform = 'scale(0.88) rotate(-3deg)'; img.style.opacity = '0.6';
+        setTimeout(function () { img.style.transform = ''; img.style.opacity = ''; }, 280);
       }
-
       if (fwrap) {
-        fwrap.querySelectorAll('.fflavor').forEach(function (b, j) {
-          b.classList.toggle('active', j === i);
-        });
+        fwrap.querySelectorAll('.fflavor').forEach(function (b, j) { b.classList.toggle('active', j === i); });
       }
     }
 
     var pImg = document.getElementById('prodImg');
-    if (pImg) {
-      pImg.addEventListener('click', function () {
-        setFlavor((cur + 1) % flavors.length);
-      });
-    }
-
-    if (prodAcquireBtn) {
-      prodAcquireBtn.addEventListener('click', function () {
-        openWhatsApp(buildMsg(0));
-      });
-    }
-
-    // Expõe buildMsg para uso nos botões de oferta
+    if (pImg) { pImg.addEventListener('click', function () { setFlavor((cur + 1) % flavors.length); }); }
+    if (prodAcquireBtn) { prodAcquireBtn.addEventListener('click', function () { openWhatsApp(buildMsg(0)); }); }
     window._junin_buildMsg = buildMsg;
   }
 
-
-  // 4. NAVBAR
+  // NAVBAR
   function initNavbar() {
-    var navbar  = document.getElementById('navbar');
+    var navbar = document.getElementById('navbar');
     var navMenu = document.getElementById('navMenu');
-    var navTog  = document.getElementById('navToggle');
+    var navTog = document.getElementById('navToggle');
+    var navClose = document.getElementById('navClose');
+    var prodSection = document.getElementById('produtos');
+
+    if (window.innerWidth < 769) {
+      prodSection.style.display = 'block';
+      if (navMenu) navMenu.classList.remove('open');
+    }
 
     if (navTog && navMenu) {
       navTog.addEventListener('click', function () {
-        navMenu.classList.toggle('open');
+        navMenu.classList.add('open');
+        navTog.style.display = 'none';
+        if (navClose) navClose.style.display = 'block';
+      });
+    }
+    if (navClose && navMenu) {
+      navClose.addEventListener('click', function () {
+        navMenu.classList.remove('open');
+        navClose.style.display = 'none';
+        if (navTog) navTog.style.display = '';
       });
     }
 
     document.querySelectorAll('.nav-link').forEach(function (link) {
       link.addEventListener('click', function (e) {
         var h = link.getAttribute('href');
-        if (!h || !h.startsWith('#')) return;
+        if (!h || h.indexOf('#') !== 0) return;
         e.preventDefault();
-        var target = document.getElementById(h.slice(1));
+        var target = document.getElementById(h.substring(1));
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         document.querySelectorAll('.nav-link').forEach(function (l) { l.classList.remove('active'); });
         link.classList.add('active');
-        if (navMenu) navMenu.classList.remove('open');
+        if (navMenu) { navMenu.classList.remove('open'); navClose.style.display = 'none'; if (navTog) navTog.style.display = ''; }
       });
     });
 
-    var secsAll  = document.querySelectorAll('.section');
-    var nlinks   = document.querySelectorAll('.nav-link[data-section]');
+    var secsAll = document.querySelectorAll('.section');
+    var nlinks = document.querySelectorAll('.nav-link[data-section]');
 
     if (navbar) {
       window.addEventListener('scroll', function () {
@@ -792,79 +698,50 @@
         secsAll.forEach(function (s) {
           if (s.offsetTop && window.scrollY >= s.offsetTop - 150) current = s.id;
         });
-        nlinks.forEach(function (l) {
-          l.classList.toggle('active', l.dataset.section === current);
-        });
+        nlinks.forEach(function (l) { l.classList.toggle('active', l.getAttribute('data-section') === current); });
       });
     }
+
+    if (window.innerWidth < 769) { prodSection.style.display = 'block'; }
   }
 
-
-  // 5. BOTÕES DE AQUISIÇÃO
+  // ACQUIRE BUTTONS
   function initAcquireButtons() {
     document.querySelectorAll('.acquire-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var q   = parseInt(btn.getAttribute('data-qty')) || 0;
+        var q = parseInt(btn.getAttribute('data-qty')) || 0;
         var msg = window._junin_buildMsg ? window._junin_buildMsg(q) : '';
         openWhatsApp(msg);
       });
     });
   }
 
-
-  // 6. COOKIES
+  // COOKIES
   function initCookies() {
-    var b   = document.getElementById('cookieBanner');
+    var b = document.getElementById('cookieBanner');
     if (!b) return;
-
-    var ac  = document.getElementById('cookieAccept');
-    var st  = document.getElementById('cookieSettings');
-    var pn  = document.getElementById('cookieSettingsPnl');
-    var an  = document.getElementById('cookieAnalytics');
-
-    if (localStorage.getItem('cookie_consent')) {
-      if (an && localStorage.getItem('cookie_analytics') === 'true') {
-        an.classList.add('on');
-      }
-      return;
-    }
-
+    var ac = document.getElementById('cookieAccept');
+    if (localStorage.getItem('cookie_consent')) return;
     setTimeout(function () { b.classList.add('show'); }, 1500);
-
     if (ac) {
       ac.addEventListener('click', function () {
         localStorage.setItem('cookie_consent', 'true');
-        localStorage.setItem('cookie_analytics', an && an.classList.contains('on') ? 'true' : 'false');
         b.classList.remove('show');
       });
     }
-    if (st) st.addEventListener('click', function () { pn.classList.toggle('open'); });
-    if (an) an.addEventListener('click', function () { an.classList.toggle('on'); });
   }
 
-
-  // 7. ANIMAÇÕES DE SCROLL
+  // SCROLL ANIMATIONS
   function initScrollAnimations() {
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
     }, { threshold: 0.1 });
-
-    document.querySelectorAll('[data-animate]').forEach(function (el) {
-      obs.observe(el);
-    });
+    document.querySelectorAll('[data-animate]').forEach(function (el) { obs.observe(el); });
   }
 
-
-  // Inicialização
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
+  } else { init(); }
 })();

@@ -12,32 +12,37 @@
 </head>
 <body>
 
-    <!-- ========== FUNDO: grid + particulas ========== -->
     <div class="fundo" aria-hidden="true">
         <canvas id="gridCanvas"></canvas>
-        <canvas id="particlesCanvas"></canvas>
         <div class="vignette"></div>
     </div>
 
-    <!-- ========== CONTEUDO ========== -->
     <div class="page">
 
-        <!-- NAVBAR -->
         <nav class="navbar" id="navbar">
             <div class="navbar-container">
-                <a href="#" class="navbar-logo" id="logoBtn">
-                    <i class="fa-solid fa-fire-flame-curved"></i>
-                    <span>Junin</span>
+                <a href="#inicio" class="navbar-logo" id="logoBtn">
+                    <span class="logo-icon"><i class="fa-solid fa-fire-flame-curved"></i></span>
+                    <span class="logo-text">Junin</span>
                 </a>
                 <ul class="nav-menu" id="navMenu">
-                    <li><a href="#inicio" class="nav-link active" data-section="inicio">Início</a></li>
-                    <li><a href="#produtos" class="nav-link" data-section="produtos">Produtos</a></li>
+                    <li><a href="#inicio" class="nav-link active" data-section="inicio" id="navInicio">
+                        <i class="fa-solid fa-house"></i> Início
+                    </a></li>
+                    <li><a href="#produtos" class="nav-link" data-section="produtos" id="navProd">
+                        <i class="fa-solid fa-box-open"></i> Produtos
+                    </a></li>
                 </ul>
-                <button class="nav-toggle" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <button class="nav-toggle nav-close-x" id="navClose" aria-label="Fechar" style="display:none">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
         </nav>
 
-        <!-- ========== INICIO / HERO ========== -->
+        <!-- HERO - desktop only -->
         <section class="section section-hero" id="inicio">
             <div class="hero-wrapper">
                 <div class="hero-content" data-animate>
@@ -80,8 +85,7 @@
                     </div>
                 </div>
 
-                <div class="hero-globe">
-                    <!-- #globeCanvas injetado via JS -->
+                <div class="hero-globe" id="heroGlobe">
                     <div class="globe-delivery-card">
                         <i class="fa-solid fa-location-dot"></i>
                         <div>
@@ -93,21 +97,17 @@
             </div>
         </section>
 
-        <!-- ========== PRODUTOS ========== -->
+        <!-- PRODUTOS -->
         <section class="section section-produtos" id="produtos">
-
-            <!-- FRAME DEDICADO PRODUTOS -->
             <div class="prod-frame-card">
                 <div class="pf-top-accent"></div>
 
-                <!-- HEADER (sempre visível) -->
                 <div class="prod-header-new" data-animate>
                     <span class="prod-label-tag">Loja Oficial</span>
                     <h2 class="prod-title-new">Ignite V80</h2>
                     <p class="prod-subtitle-new">8000 puffs — 12 sabores — entrega grátis em Maringá</p>
                 </div>
 
-                <!-- ====== SECAO: PRODUTO ====== -->
                 <div class="prod-section" id="sectionProduto">
                     <div class="prod-section-header">
                         <span class="prod-section-icon"><i class="fa-solid fa-box-open"></i></span>
@@ -152,7 +152,6 @@
                     </div>
                 </div>
 
-                <!-- ====== SECAO: OFERTAS ====== -->
                 <div class="prod-section" id="sectionOfertas">
                     <div class="prod-section-header">
                         <span class="prod-section-icon"><i class="fa-solid fa-tags"></i></span>
@@ -193,8 +192,7 @@
                     </div>
                 </div>
 
-                <!-- ====== SECAO: DETALHES ====== -->
-                <div class="prod-section" id="sectionDetalhes">
+                <div class="prod-section section-det-pc" id="sectionDetalhes">
                     <div class="prod-section-header">
                         <span class="prod-section-icon"><i class="fa-solid fa-list-check"></i></span>
                         <h3 class="prod-section-title">Detalhes &amp; Entrega</h3>
@@ -211,12 +209,12 @@
                                 <div class="sd-item"><i class="fa-solid fa-plug"></i><span><strong>USB-C</strong> Recarga</span></div>
                                 <div class="sd-item"><i class="fa-solid fa-gears"></i><span><strong>Mesh</strong> Coil Duplo</span></div>
                             </div>
-                            <div class="sd-detail-list">
-                                <div class="sd-detail"><i class="fa-solid fa-check"></i> Dispositivo recarregável, não reutilizável</div>
-                                <div class="sd-detail"><i class="fa-solid fa-check"></i> Resistor em mesh de 1.0Ω para sabor puro</div>
-                                <div class="sd-detail"><i class="fa-solid fa-check"></i> Ativação por sopro — sem botões</div>
-                                <div class="sd-detail"><i class="fa-solid fa-check"></i> Bateria de 650mAh com carregamento rápido USB-C</div>
-                            </div>
+                            <ul class="sd-detail-list">
+                                <li class="sd-detail"><i class="fa-solid fa-check"></i> Dispositivo recarregável, não reutilizável</li>
+                                <li class="sd-detail"><i class="fa-solid fa-check"></i> Resistor em mesh de 1.0Ω para sabor puro</li>
+                                <li class="sd-detail"><i class="fa-solid fa-check"></i> Ativação por sopro — sem botões</li>
+                                <li class="sd-detail"><i class="fa-solid fa-check"></i> Bateria de 650mAh com carregamento rápido USB-C</li>
+                            </ul>
                         </div>
                         <div class="sd-card sd-delivery">
                             <div class="sd-title"><i class="fa-solid fa-truck-fast"></i> Entrega</div>
@@ -242,12 +240,10 @@
                     </div>
                 </div>
 
-            </div><!-- /prod-frame-card -->
+            </div>
         </section>
 
-
-        <!-- ========== FOOTER ========== -->
-        <footer class="footer">
+        <footer class="footer footer-pc-only">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3><i class="fa-solid fa-fire-flame-curved"></i> Junin</h3>
@@ -271,7 +267,6 @@
             <div class="footer-bottom"><p>© 2026 Junin. Todos os direitos reservados.</p></div>
         </footer>
 
-        <!-- ========== COOKIES ========== -->
         <div class="cookie-banner" id="cookieBanner">
             <div class="cookie-inner">
                 <div class="cookie-text">
@@ -279,23 +274,12 @@
                     <p>Usamos cookies para melhorar sua experiência no site.</p>
                 </div>
                 <div class="cookie-btn-wrap">
-                    <button class="btn-cookie btn-cookie-settings" id="cookieSettings"><i class="fa-solid fa-gear"></i> Opções</button>
                     <button class="btn-cookie btn-cookie-accept" id="cookieAccept"><i class="fa-solid fa-check"></i> Aceitar</button>
-                </div>
-            </div>
-            <div class="cookie-settings-pnl" id="cookieSettingsPnl">
-                <div class="cookie-option">
-                    <span>Cookies essenciais (obrigatórios)</span>
-                    <div class="cookie-toggle required on"></div>
-                </div>
-                <div class="cookie-option">
-                    <span>Cookies de desempenho e análise</span>
-                    <div class="cookie-toggle" id="cookieAnalytics"></div>
                 </div>
             </div>
         </div>
 
-    </div><!-- /page -->
+    </div>
 
     <script src="app.js" defer></script>
 </body>
