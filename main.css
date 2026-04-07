@@ -16,12 +16,21 @@
 
 /* ─── RESET ─── */
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tp);font-family:'DM Sans','Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--tp);font-family:'DM Sans','Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
-img{max-width:100%;display:block}
+img{max-width:100%;display:block;height:auto}
+
+/* ─── PROTECAO GLOBAL CONTRA OVERFLOW ─── */
+body, .page, .section, .hero-wrapper, .hero-content,
+.prod-frame-card, .prod-grid, .prod-card-side, .sd-grid,
+.offers-grid-new, .flavor-grid, .hero-actions, .stats-new{
+    overflow-wrap:break-word;word-break:break-word;overflow-wrap:anywhere;
+}
+.page, .hero-wrapper, .section-produtos{max-width:100%;min-width:0}
+.hero-content, .prod-frame-card{min-width:0;max-width:100%}
 
 /* ─── FUNDO: wrapper com canvas ─── */
 .fundo {
@@ -91,8 +100,68 @@ img{max-width:100%;display:block}
         padding:16px 20px; gap:6px;
         transform:translateY(-120%); transition:var(--tr);
         border-bottom:1px solid var(--border);
+        max-height:calc(100dvh - 60px);overflow-y:auto;
     }
     .nav-menu.open{transform:translateY(0)}
+    .nav-link{padding:12px 14px;font-size:1em}
+    /* Hero mobile */
+    .section-hero{min-height:auto;padding-top:60px}
+    .hero-wrapper{
+        grid-template-columns:1fr;
+        min-height:auto;padding:24px 16px 20px;
+        text-align:center;gap:32px;
+    }
+    .hero-content{max-width:100%;padding:0 4px}
+    .hero-title-new{font-size:clamp(30px,8vw,44px);margin-bottom:14px}
+    .hero-desc-new{font-size:14px;margin:0 auto 24px!important;max-width:100%}
+    .hero-actions{justify-content:center;gap:10px}
+    .btn-act{padding:13px 20px;font-size:13px;width:100%;justify-content:center}
+    .stats-new{justify-content:center;gap:20px}
+    .hero-globe{display:none!important;min-height:0}
+    /* Product section mobile */
+    .section-produtos{padding:40px 12px 60px}
+    .prod-frame-card{padding:24px 14px}
+    .prod-tab-bar{max-width:100%;flex-wrap:wrap}
+    .prod-tab{padding:8px 14px;font-size:11px;flex:1;justify-content:center}
+    .prod-header-new{margin-bottom:24px}
+    .prod-title-new{font-size:clamp(32px,8vw,50px)}
+    .prod-subtitle-new{font-size:12px;letter-spacing:1px}
+    .prod-grid{grid-template-columns:1fr;gap:16px}
+    .prod-card-main{padding:24px 16px}
+    .prod-flavor-display{flex-wrap:wrap;justify-content:center;text-align:center}
+    #pfName{font-size:18px}
+    .pf-tag{font-size:8px;letter-spacing:2px}
+    .prod-quick-stats{grid-template-columns:repeat(4,1fr);gap:8px}
+    .pq-val{font-size:15px}
+    .pq-lbl{font-size:7px}
+    .flavor-grid{grid-template-columns:repeat(3,1fr);gap:6px}
+    .fflavor{padding:10px 6px;font-size:8px}
+    /* Offers mobile */
+    .offers-grid-new{grid-template-columns:1fr;gap:16px}
+    .of-card{padding:24px 18px}
+    .of-val{font-size:32px}
+    /* Specs mobile */
+    .specs-delivery-row{grid-template-columns:1fr;gap:12px}
+    .sd-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+    .sd-item{padding:10px 10px}
+    .sd-card{padding:20px 16px}
+    /* Footer mobile */
+    .footer-grid{grid-template-columns:1fr;text-align:center}
+    .footer-brand{margin-bottom:8px}
+    .footer-links ul{align-items:center}
+}
+
+/* Telas muito pequenas (< 400px) */
+@media(max-width:400px){
+    .hero-title-new{font-size:28px}
+    .prod-title-new{font-size:28px}
+    .prod-tab{padding:6px 10px;font-size:10px;gap:4px}
+    .prod-tab-bar{font-size:10px}
+    .prod-quick-stats{grid-template-columns:repeat(2,1fr)}
+    .flavor-grid{grid-template-columns:repeat(2,1fr)}
+    .sd-grid{grid-template-columns:1fr}
+    #pfName{font-size:16px}
+    .of-val{font-size:28px}
 }
 
 /* ─── Sections base ─── */
@@ -223,12 +292,18 @@ img{max-width:100%;display:block}
 @keyframes globeGlow{0%{opacity:.5;transform:scale(1)}100%{opacity:1;transform:scale(1.15)}}
 
 @media(max-width:900px){
-    .hero-wrapper{grid-template-columns:1fr;gap:48px;text-align:center}
+    /* Tablet — globe stays hidden but hero text centers */
+    .hero-wrapper{gap:48px;text-align:center}
     .hero-content{max-width:100%}
     .hero-desc-new,.puff-badge{margin-left:auto;margin-right:auto}
     .hero-actions{justify-content:center}
     .stats-new{justify-content:center}
     .hero-globe{min-height:0;display:none}
+    /* Product grid single column on tablet */
+    .prod-grid{grid-template-columns:1fr}
+    .specs-delivery-row{grid-template-columns:1fr}
+    .flavor-grid{grid-template-columns:repeat(4,1fr)}
+    .sd-grid{grid-template-columns:repeat(3,1fr)}
 }
 
 /* ═══════════════════════════════════════
@@ -236,7 +311,7 @@ img{max-width:100%;display:block}
 ═══════════════════════════════════════ */
 .section-produtos{
     padding:80px 24px 100px;
-    max-width:1100px;margin:0 auto;
+    max-width:1100px;width:100%;margin:0 auto;
 }
 
 /* ─── FRAME CARD (dedicated product wrapper) ─── */
@@ -660,3 +735,22 @@ img{max-width:100%;display:block}
 .cookie-toggle.on::after{left:20px}
 .cookie-toggle.required{opacity:.5;cursor:not-allowed}
 @media(max-width:600px){.cookie-inner{flex-direction:column;text-align:center}.cookie-btn-wrap{width:100%}.cookie-btn-wrap .btn-cookie{flex:1}}
+
+/* SAFE AREA PADDING — iPhones com notch */
+@supports(padding: max(0px)){
+    .navbar-container{padding-left:max(24px,env(safe-area-inset-left,24px));padding-right:max(24px,env(safe-area-inset-right,24px))}
+    .cookie-banner{padding-bottom:max(18px,env(safe-area-inset-bottom,18px))}
+}
+
+/* DESKTOP OTIMIZACAO (telas largas 1440px+) */
+@media(min-width:1440px){
+    .hero-wrapper{padding:60px 5% 80px}
+    #globeCanvas{width:560px;height:560px}
+    .hero-globe{min-height:600px}
+}
+
+/* TABLET INTERMEDIARIO (1024px) */
+@media(max-width:1024px){
+    #globeCanvas{width:400px;height:400px}
+    .hero-globe{min-height:460px}
+}
