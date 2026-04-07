@@ -22,27 +22,31 @@
         <nav class="navbar" id="navbar">
             <div class="navbar-container">
                 <a href="#inicio" class="navbar-logo" id="logoBtn">
-                    <span class="logo-icon"><i class="fa-solid fa-fire-flame-curved"></i></span>
+                    <span class="logo-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 3z"/></svg>
+                    </span>
                     <span class="logo-text">Junin</span>
                 </a>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#inicio" class="nav-link active" data-section="inicio" id="navInicio">
-                        <i class="fa-solid fa-house"></i> Início
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                        Início
                     </a></li>
                     <li><a href="#produtos" class="nav-link" data-section="produtos" id="navProd">
-                        <i class="fa-solid fa-box-open"></i> Produtos
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                        Produtos
                     </a></li>
                 </ul>
                 <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                    <i class="fa-solid fa-bars"></i>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                 </button>
                 <button class="nav-toggle nav-close-x" id="navClose" aria-label="Fechar" style="display:none">
-                    <i class="fa-solid fa-xmark"></i>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
             </div>
         </nav>
 
-        <!-- HERO - desktop only -->
+        <!-- HERO -->
         <section class="section section-hero" id="inicio">
             <div class="hero-wrapper">
                 <div class="hero-content" data-animate>
@@ -52,19 +56,24 @@
                     </div>
                     <div class="hero-eyebrow">Ignite V80 — Disposable Pod</div>
                     <h1 class="hero-title-new">Sabor que<br><span>Impacta</span></h1>
-                    <div class="puff-badge"><strong>8000 Puffs</strong><span>· Oferta Limitada</span></div>
+                    <div class="puff-badge">
+                        <strong>8000 Puffs</strong>
+                        <span>· Oferta Limitada</span>
+                    </div>
                     <p class="hero-desc-new">
                         Pods descartáveis 100% originais com os melhores sabores do mercado.
                         Entrega rápida, preço justo e atendimento VIP direto no WhatsApp.
                     </p>
                     <div class="hero-actions">
                         <a href="#produtos" class="btn-act btn-primary-new">
-                            <i class="fa-solid fa-fire"></i> Ver Sabores
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 3z"/></svg>
+                            Ver Sabores
                         </a>
                         <a href="https://wa.me/5511999999999?text=Olá! Vim pelo site e quero um pod Ignite V80!"
                            target="_blank" rel="noopener noreferrer"
                            class="btn-act btn-act-secondary">
-                            <i class="fa-brands fa-whatsapp"></i> Pedir Agora
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Pedir Agora
                         </a>
                     </div>
                     <div class="stats-new">
@@ -86,11 +95,15 @@
                 </div>
 
                 <div class="hero-globe" id="heroGlobe">
+                    <div class="globe-ring globe-ring-1"></div>
+                    <div class="globe-ring globe-ring-2"></div>
+                    <div class="globe-ring globe-ring-3"></div>
+                    <canvas id="globeCanvas"></canvas>
                     <div class="globe-delivery-card">
-                        <i class="fa-solid fa-location-dot"></i>
+                        <div class="globe-card-dot"></div>
                         <div>
                             <div class="del-text">Maringá / Paraná</div>
-                            <div class="del-sub"><i class="fa-solid fa-check"></i> Entrega grátis ativa</div>
+                            <div class="del-sub">Entrega grátis ativa</div>
                         </div>
                     </div>
                 </div>
@@ -102,15 +115,52 @@
             <div class="prod-frame-card">
                 <div class="pf-top-accent"></div>
 
+                <!-- HEADER NOVO -->
                 <div class="prod-header-new" data-animate>
-                    <span class="prod-label-tag">Loja Oficial</span>
+                    <div class="store-badge-row">
+                        <span class="store-badge">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                            Loja Oficial
+                        </span>
+                        <span class="store-badge-verified">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            100% Original
+                        </span>
+                    </div>
                     <h2 class="prod-title-new">Ignite V80</h2>
-                    <p class="prod-subtitle-new">8000 puffs — 12 sabores — entrega grátis em Maringá</p>
+                    <div class="prod-title-sub">
+                        <span>Disposable Pod</span>
+                        <span class="prod-title-sub-dot"></span>
+                        <span>Alta Performance</span>
+                        <span class="prod-title-sub-dot"></span>
+                        <span>Maringá</span>
+                    </div>
+                    <div class="prod-stats-strip">
+                        <div class="stat-strip-item">
+                            <span class="stat-strip-val" style="color:var(--gold)">8K</span>
+                            <span class="stat-strip-lbl">Puffs</span>
+                        </div>
+                        <div class="stat-strip-item">
+                            <span class="stat-strip-val" style="color:var(--teal)">18mL</span>
+                            <span class="stat-strip-lbl">Líquido</span>
+                        </div>
+                        <div class="stat-strip-item">
+                            <span class="stat-strip-val" style="color:var(--green)">12+</span>
+                            <span class="stat-strip-lbl">Sabores</span>
+                        </div>
+                        <div class="stat-strip-item">
+                            <span class="stat-strip-val" style="color:#818cf8">50mg</span>
+                            <span class="stat-strip-lbl">Nicotina</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- PRODUTO -->
                 <div class="prod-section" id="sectionProduto">
                     <div class="prod-section-header">
-                        <span class="prod-section-icon"><i class="fa-solid fa-box-open"></i></span>
+                        <span class="prod-section-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                        </span>
                         <h3 class="prod-section-title">Produto</h3>
                         <span class="prod-section-line"></span>
                     </div>
@@ -118,7 +168,7 @@
                         <div class="prod-card-main">
                             <div class="prod-showcase">
                                 <img class="prod-main-img" id="prodImg"
-                                    src="https://cdn.discordapp.com/attachments/1487757066087960679/1490892095869944000/x9fvk6v.png?ex=69d5b4f7&is=69d46377&hm=5a6754b4574aeb57b67285aded2f8f257fa3a18c52196ab0f85e74e32f9777f7"
+                                    src=image/ignitev80.png
                                     alt="Ignite V80">
                                 <span class="prod-tap-hint">clique para trocar sabor</span>
                             </div>
@@ -140,28 +190,34 @@
                                 <div class="pq-stat"><span class="pq-val">USB-C</span><span class="pq-lbl">Recarga</span></div>
                             </div>
                             <button class="prod-wpp-btn" id="prodAcquireBtn">
-                                <i class="fa-brands fa-whatsapp"></i> Comprar pelo WhatsApp
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                Comprar pelo WhatsApp
                             </button>
                         </div>
                         <div class="prod-card-side">
                             <div class="pcs-title">Sabores disponíveis</div>
                             <div class="pcs-sub">Toque para selecionar</div>
-                            <div class="flavor-grid" id="fwrap"></div>
+                            <div id="fwrap-outer"></div>
                             <div class="pcs-hint" id="pcsHint">Selecione um sabor acima</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- OFERTAS -->
                 <div class="prod-section" id="sectionOfertas">
                     <div class="prod-section-header">
-                        <span class="prod-section-icon"><i class="fa-solid fa-tags"></i></span>
+                        <span class="prod-section-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                        </span>
                         <h3 class="prod-section-title">Ofertas</h3>
                         <span class="prod-section-line"></span>
                     </div>
                     <div class="offers-section-new">
                         <div class="offers-grid-new">
                             <div class="of-card">
-                                <div class="of-icon"><i class="fa-solid fa-fire"></i></div>
+                                <div class="of-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 3z"/></svg>
+                                </div>
                                 <div class="of-qty">1 unidade</div>
                                 <div class="of-name">Unitário</div>
                                 <div class="of-price">
@@ -170,12 +226,15 @@
                                 </div>
                                 <div class="of-desc">Escolha qualquer sabor</div>
                                 <button class="of-buy acquire-btn" data-qty="1">
-                                    <i class="fa-brands fa-whatsapp"></i> Comprar 1 unidade
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                    Comprar 1 unidade
                                 </button>
                             </div>
                             <div class="of-card of-card-best">
                                 <div class="of-best-ribbon">melhor oferta</div>
-                                <div class="of-icon"><i class="fa-solid fa-crown"></i></div>
+                                <div class="of-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                </div>
                                 <div class="of-qty">2 unidades</div>
                                 <div class="of-name">Combo Duplo</div>
                                 <div class="of-price">
@@ -185,54 +244,103 @@
                                 <div class="of-desc">Sabores diferentes à escolha</div>
                                 <div class="of-save">Economia de R$10 no combo</div>
                                 <button class="of-buy of-buy-gold acquire-btn" data-qty="2">
-                                    <i class="fa-brands fa-whatsapp"></i> Comprar 2 unidades
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                    Comprar 2 unidades
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- DETALHES -->
                 <div class="prod-section section-det-pc" id="sectionDetalhes">
                     <div class="prod-section-header">
-                        <span class="prod-section-icon"><i class="fa-solid fa-list-check"></i></span>
+                        <span class="prod-section-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                        </span>
                         <h3 class="prod-section-title">Detalhes &amp; Entrega</h3>
                         <span class="prod-section-line"></span>
                     </div>
                     <div class="specs-delivery-row">
                         <div class="sd-card">
-                            <div class="sd-title"><i class="fa-solid fa-gauge-high"></i> Especificações Técnicas</div>
+                            <div class="sd-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Especificações Técnicas
+                            </div>
                             <div class="sd-grid">
-                                <div class="sd-item"><i class="fa-solid fa-wind"></i><span><strong>8000</strong> Puffs</span></div>
-                                <div class="sd-item"><i class="fa-solid fa-droplet"></i><span><strong>18mL</strong> Líquido</span></div>
-                                <div class="sd-item"><i class="fa-solid fa-battery-full"></i><span><strong>650mAh</strong> Bateria</span></div>
-                                <div class="sd-item"><i class="fa-solid fa-bolt"></i><span><strong>50mg</strong> Nicotina</span></div>
-                                <div class="sd-item"><i class="fa-solid fa-plug"></i><span><strong>USB-C</strong> Recarga</span></div>
-                                <div class="sd-item"><i class="fa-solid fa-gears"></i><span><strong>Mesh</strong> Coil Duplo</span></div>
+                                <div class="sd-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M17.7 7.7a2.5 2.5 0 111.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1111 8H2"/><path d="M12.6 19.4A2 2 0 1014 16H2"/></svg>
+                                    <span><strong>8000</strong> Puffs</span>
+                                </div>
+                                <div class="sd-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+                                    <span><strong>18mL</strong> Líquido</span>
+                                </div>
+                                <div class="sd-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M22 11V13"/></svg>
+                                    <span><strong>650mAh</strong> Bateria</span>
+                                </div>
+                                <div class="sd-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                    <span><strong>50mg</strong> Nicotina</span>
+                                </div>
+                                <div class="sd-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12H2a10 10 0 0020 0h-3"/><path d="M12 2v4M12 18v4"/></svg>
+                                    <span><strong>USB-C</strong> Recarga</span>
+                                </div>
+                                <div class="sd-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                    <span><strong>Mesh</strong> Coil Duplo</span>
+                                </div>
                             </div>
                             <ul class="sd-detail-list">
-                                <li class="sd-detail"><i class="fa-solid fa-check"></i> Dispositivo recarregável, não reutilizável</li>
-                                <li class="sd-detail"><i class="fa-solid fa-check"></i> Resistor em mesh de 1.0Ω para sabor puro</li>
-                                <li class="sd-detail"><i class="fa-solid fa-check"></i> Ativação por sopro — sem botões</li>
-                                <li class="sd-detail"><i class="fa-solid fa-check"></i> Bateria de 650mAh com carregamento rápido USB-C</li>
+                                <li class="sd-detail">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    Dispositivo recarregável, não reutilizável
+                                </li>
+                                <li class="sd-detail">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    Resistor em mesh de 1.0Ω para sabor puro
+                                </li>
+                                <li class="sd-detail">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    Ativação por sopro — sem botões
+                                </li>
+                                <li class="sd-detail">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    Bateria de 650mAh com carregamento rápido USB-C
+                                </li>
                             </ul>
                         </div>
                         <div class="sd-card sd-delivery">
-                            <div class="sd-title"><i class="fa-solid fa-truck-fast"></i> Entrega</div>
+                            <div class="sd-title">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                                Entrega
+                            </div>
                             <div class="del-content">
                                 <div class="del-main">
-                                    <i class="fa-solid fa-truck-fast"></i>
+                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                                     <div>
                                         <div class="del-main-text">Entrega Grátis em Maringá</div>
                                         <div class="del-main-sub">Seg a Dom — 9h às 22h</div>
                                     </div>
                                 </div>
                                 <div class="del-badges">
-                                    <span class="del-badge"><i class="fa-solid fa-map-pin"></i> Maringá / PR</span>
-                                    <span class="del-badge"><i class="fa-solid fa-clock"></i> Rápida</span>
-                                    <span class="del-badge"><i class="fa-solid fa-shield-halved"></i> Segura</span>
+                                    <span class="del-badge">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                        Maringá / PR
+                                    </span>
+                                    <span class="del-badge">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                        Rápida
+                                    </span>
+                                    <span class="del-badge">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                        Segura
+                                    </span>
                                 </div>
                                 <div class="del-note">
-                                    <i class="fa-solid fa-circle-info"></i>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                                     <span>Entregamos na sua porta em até 40 minutos após confirmação do pedido.</span>
                                 </div>
                             </div>
@@ -246,7 +354,10 @@
         <footer class="footer footer-pc-only">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3><i class="fa-solid fa-fire-flame-curved"></i> Junin</h3>
+                    <h3>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 3z"/></svg>
+                        Junin
+                    </h3>
                     <p>Pods Ignite V80 originais. Entrega grátis em Maringá.</p>
                 </div>
                 <div class="footer-links">
@@ -259,8 +370,18 @@
                 <div class="footer-links">
                     <h4>Redes</h4>
                     <ul>
-                        <li><a href="https://wa.me/5511999999999" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
-                        <li><a href="https://instagram.com/rip_sheldoohz" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                        <li>
+                            <a href="https://wa.me/5511999999999" target="_blank">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                WhatsApp
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/rip_sheldoohz" target="_blank">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                                Instagram
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -270,11 +391,17 @@
         <div class="cookie-banner" id="cookieBanner">
             <div class="cookie-inner">
                 <div class="cookie-text">
-                    <h4><i class="fa-solid fa-cookie-bite"></i> Cookies</h4>
+                    <h4>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="margin-right:6px"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 0a5 5 0 015 5"/><circle cx="12" cy="12" r="1"/><circle cx="17" cy="9" r="1"/><circle cx="8" cy="17" r="1"/></svg>
+                        Cookies
+                    </h4>
                     <p>Usamos cookies para melhorar sua experiência no site.</p>
                 </div>
                 <div class="cookie-btn-wrap">
-                    <button class="btn-cookie btn-cookie-accept" id="cookieAccept"><i class="fa-solid fa-check"></i> Aceitar</button>
+                    <button class="btn-cookie btn-cookie-accept" id="cookieAccept">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        Aceitar
+                    </button>
                 </div>
             </div>
         </div>
