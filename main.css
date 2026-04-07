@@ -228,8 +228,7 @@ img{max-width:100%;display:block}
     .hero-desc-new,.puff-badge{margin-left:auto;margin-right:auto}
     .hero-actions{justify-content:center}
     .stats-new{justify-content:center}
-    .hero-globe{min-height:340px}
-    #globeCanvas{width:280px;height:280px}
+    .hero-globe{min-height:0;display:none}
 }
 
 /* ═══════════════════════════════════════
@@ -618,85 +617,6 @@ img{max-width:100%;display:block}
     .of-card{padding:24px 16px}
 }
 
-/* ═══════════════════════════════════════
-   CONTATO
-═══════════════════════════════════════ */
-.section-contato{padding-top:100px;padding-bottom:80px}
-
-.contato-frame{
-    max-width:800px;margin:0 auto;
-    padding:48px 32px;
-    background:var(--bg-card);backdrop-filter:blur(14px);
-    border:1px solid var(--border);border-radius:20px;
-    box-shadow:0 8px 40px rgba(0,0,0,.3);
-    position:relative;
-}
-.contato-frame::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--wpp),transparent);border-radius:2px}
-
-.contact-wrapper{position:relative;margin-bottom:36px}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
-.contact-card{
-    display:flex;flex-direction:column;align-items:center;gap:12px;
-    padding:36px 32px 32px;border-radius:var(--rxl);
-    border:1px solid var(--border);background:var(--bg-card);
-    transition:var(--tr);text-align:center;position:relative;overflow:hidden;
-}
-.contact-card:hover{transform:translateY(-10px)}
-.contact-card.whatsapp{border-color:rgba(37,211,102,.15)}
-.contact-card.whatsapp:hover{border-color:rgba(37,211,102,.4);box-shadow:0 12px 40px rgba(37,211,102,.15)}
-.contact-card.instagram{border-color:rgba(225,48,108,.15)}
-.contact-card.instagram:hover{border-color:rgba(225,48,108,.4);box-shadow:0 12px 40px rgba(225,48,108,.15)}
-
-.card-glow-bg{
-    position:absolute;top:-50%;left:50%;width:180%;height:180%;
-    transform:translateX(-50%);border-radius:50%;
-    pointer-events:none;opacity:0;transition:opacity .5s;z-index:0;
-}
-.contact-card.whatsapp .card-glow-bg{background:radial-gradient(circle,rgba(37,211,102,.08) 0%,transparent 60%)}
-.contact-card.instagram .card-glow-bg{background:radial-gradient(circle,rgba(225,48,108,.08) 0%,transparent 60%)}
-.contact-card:hover .card-glow-bg{opacity:1}
-
-.contact-top{display:flex;align-items:center;justify-content:space-between;width:100%;position:relative;z-index:1;margin-bottom:4px}
-.contact-icon-wrap{
-    position:relative;width:64px;height:64px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:30px;flex-shrink:0;transition:var(--tr);
-}
-.contact-card.whatsapp .contact-icon-wrap{background:rgba(37,211,102,.1);color:var(--wpp);border:2px solid rgba(37,211,102,.25)}
-.contact-card.instagram .contact-icon-wrap{border:2px solid rgba(225,48,108,.25);background:linear-gradient(135deg,rgba(240,148,51,.1),rgba(225,48,108,.1));color:#e1306c}
-.contact-card:hover .contact-icon-wrap{transform:scale(1.08)}
-.icon-ping{position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--wpp);opacity:0;animation:iping 2s ease-out infinite}
-.contact-card.instagram .icon-ping{border-color:#e1306c;animation-delay:-.5s}
-@keyframes iping{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
-
-.online-badge{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--rall);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);font-size:.7em;font-weight:700;color:#22c55e;text-transform:uppercase}
-.online-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:spulse 2s ease-in-out infinite}
-@keyframes spulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
-
-.contact-card h3{font-size:1.35em;font-weight:800;position:relative;z-index:1}
-.contact-card p{color:var(--ts);font-size:.86em;line-height:1.55;max-width:260px;margin:0 auto;position:relative;z-index:1}
-
-.contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--rm);font-size:.85em;font-weight:700;transition:var(--tr);position:relative;z-index:1}
-.contact-card.whatsapp .contact-btn{background:rgba(37,211,102,.12);color:var(--wpp);border:1px solid rgba(37,211,102,.25)}
-.contact-card.whatsapp:hover .contact-btn{background:var(--wpp);color:#fff}
-.contact-card.instagram .contact-btn{background:rgba(225,48,108,.1);color:#e1306c;border:1px solid rgba(225,48,108,.2)}
-.contact-card.instagram:hover .contact-btn{background:#e1306c;color:#fff}
-
-.contact-features{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px;position:relative;z-index:1}
-.contact-features span{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:var(--rall);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);font-size:.72em;font-weight:600;color:var(--ts);transition:var(--tr);white-space:nowrap}
-.contact-card:hover .contact-features span{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
-
-.contact-info-strip{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:24px;padding:18px 28px;border-radius:var(--rxl);background:rgba(22,22,31,.5);border:1px solid var(--border);flex-wrap:wrap}
-.info-item{display:flex;align-items:center;gap:8px;font-size:.85em;color:var(--ts)}
-.info-item strong{color:var(--tp);font-weight:700}
-.info-strip-divider{width:1px;height:28px;background:var(--border)}
-
-@media(max-width:600px){
-    .contact-grid{grid-template-columns:1fr}
-    .contact-info-strip{flex-direction:column;gap:12px;padding:16px 20px}
-    .info-strip-divider{width:60%;height:1px}
-    .contato-frame{padding:32px 16px}
-}
 
 /* ═══════════════════════════════════════
    FOOTER

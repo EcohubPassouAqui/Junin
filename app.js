@@ -327,11 +327,12 @@ function init(){
     }
 
     // Build WhatsApp message based on current flavor + qty
-    function buildZapMsg(){
+    function buildZapMsg(qty){
         var f=flavors[cur];
-        if(zapQty===0){
+        qty = (typeof qty !== 'undefined') ? qty : zapQty;
+        if(qty===0){
             return 'Ola! Vim pelo site Junin Shop e quero saber mais sobre o Ignite V80 sabor '+f.name+' ('+f.tag+'). Pode me ajudar?';
-        } else if(zapQty===1){
+        } else if(qty===1){
             return 'Ola! Vim pelo site Junin Shop e quero comprar 1 unidade do Ignite V80 — sabor '+f.name+' ('+f.tag+').';
         } else {
             return 'Ola! Vim pelo site Junin Shop e quero o Combo Duplo (2 unidades): 1x '+f.name+' (+ outro sabor diferente). Como funciona a entrega?';
@@ -341,14 +342,19 @@ function init(){
     function setFlavor(i){
         cur=i;
         var f=flavors[i];
+        var cc = catColors[f.cat];
         // Update flavor display
         if(pfName) pfName.textContent = f.name;
         if(pfTag) pfTag.textContent = f.tag;
         if(pfDot){
-            var cc=catColors[f.cat];
-            pfDot.style.background=cc;
+            pfDot.style.background = cc;
+            pfDot.style.boxShadow = '0 0 8px '+cc;
         }
-        if(pfTag) pfTag.style.color = catColors[f.cat];
+        if(pfTag){
+            pfTag.style.color = cc;
+            pfTag.style.borderColor = cc.replace(')',',.15)').replace('rgb','rgba');
+            pfTag.style.background = cc.replace(')',',.06)').replace('rgb','rgba');
+        }
         // Animate image
         var img=document.getElementById('prodImg');
         if(img){img.style.transform='scale(0.88) rotate(-3deg)';img.style.opacity='.6';setTimeout(function(){img.style.transform='';img.style.opacity=''},280)}
@@ -391,7 +397,9 @@ function init(){
         navbar.classList.toggle('scrolled',window.scrollY>30);
         if(secsAll.length && nlinksAll.length){
             var c='inicio';
-            secsAll.forEach(function(s){if(window.scrollY>=s.offsetTop-150)c=s.id});
+            secsAll.forEach(function(s){
+                if(s.offsetTop && window.scrollY>=s.offsetTop-150) c=s.id;
+            });
             nlinksAll.forEach(function(l){l.classList.toggle('active',l.dataset.section===c)});
         }
     });
@@ -415,8 +423,7 @@ function init(){
     document.querySelectorAll('.acquire-btn').forEach(function(btn){
         btn.addEventListener('click',function(){
             var q=parseInt(btn.getAttribute('data-qty'))||0;
-            zapQty=q;
-            var msg=buildZapMsg();
+            var msg=buildZapMsg(q);
             window.open('https://wa.me/554499663436?text='+encodeURIComponent(msg),'_blank');
         });
     });
