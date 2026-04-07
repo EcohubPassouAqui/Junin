@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junin Shop | Ignite V80</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <!-- ========== FUNDO: grid + particulas ========== -->
+    <div class="fundo" aria-hidden="true">
+        <canvas id="gridCanvas"></canvas>
+        <canvas id="particlesCanvas"></canvas>
+        <div class="vignette"></div>
+    </div>
+
+    <!-- ========== CONTEUDO ========== -->
+    <div class="page">
+
+        <!-- NAVBAR -->
+        <nav class="navbar" id="navbar">
+            <div class="navbar-container">
+                <a href="#" class="navbar-logo" id="logoBtn">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                    <span>Junin Shop</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#inicio" class="nav-link active" data-section="inicio">Início</a></li>
+                    <li><a href="#produtos" class="nav-link" data-section="produtos">Produtos</a></li>
+                    <li><a href="#contato" class="nav-link" data-section="contato">Contato</a></li>
+                </ul>
+                <button class="nav-toggle" id="navToggle"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </nav>
+
+        <!-- ========== INICIO / HERO ========== -->
+        <section class="section section-hero" id="inicio">
+            <div class="hero-wrapper">
+                <div class="hero-content" data-animate>
+                    <div class="hero-badge-new">
+                        <span class="badge-pulse-dot"></span>
+                        Novo Estoque — Oferta Limitada!
+                    </div>
+                    <div class="hero-eyebrow">Ignite V80 — Disposable Pod</div>
+                    <h1 class="hero-title-new">Sabor que<br><span>Impacta</span></h1>
+                    <div class="puff-badge"><strong>8000 Puffs</strong><span>· Oferta Limitada</span></div>
+                    <p class="hero-desc-new">
+                        Pods descartáveis 100% originais com os melhores sabores do mercado.
+                        Entrega rápida, preço justo e atendimento VIP direto no WhatsApp.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#produtos" class="btn-act btn-primary-new">
+                            <i class="fa-solid fa-fire"></i> Ver Sabores
+                        </a>
+                        <a href="https://wa.me/554499663436?text=Olá! Vim pelo site e quero um pod Ignite V80!"
+                           target="_blank" rel="noopener noreferrer"
+                           class="btn-act btn-act-secondary">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir Agora
+                        </a>
+                    </div>
+                    <div class="stats-new">
+                        <div class="stat-new">
+                            <span class="stat-val-new" style="color:var(--gold)">12+</span>
+                            <span class="stat-lbl-new">Sabores</span>
+                        </div>
+                        <div class="stat-div"></div>
+                        <div class="stat-new">
+                            <span class="stat-val-new" style="color:var(--teal)">8K</span>
+                            <span class="stat-lbl-new">Puffs</span>
+                        </div>
+                        <div class="stat-div"></div>
+                        <div class="stat-new">
+                            <span class="stat-val-new" style="color:var(--green)">100%</span>
+                            <span class="stat-lbl-new">Original</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-globe" data-animate>
+                    <!-- #globeCanvas injetado via JS -->
+                    <div class="globe-delivery-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <div class="del-text">Maringá / Paraná</div>
+                            <div class="del-sub"><i class="fa-solid fa-check"></i> Entrega grátis ativa</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PRODUTOS ========== -->
+        <section class="section section-produtos" id="produtos">
+
+            <!-- FRAME DEDICADO PRODUTOS -->
+            <div class="prod-frame-card">
+                <div class="pf-top-accent"></div>
+
+                <!-- HEADER (sempre visível) -->
+                <div class="prod-header-new" data-animate>
+                    <span class="prod-label-tag">Loja Oficial</span>
+                    <h2 class="prod-title-new">Ignite V80</h2>
+                    <p class="prod-subtitle-new">8000 puffs — 12 sabores — entrega grátis em Maringá</p>
+                </div>
+
+                <!-- BARRA DE ABAS -->
+                <div class="prod-tab-bar" id="prodTabBar">
+                    <button class="prod-tab active" data-panel="panel-produto">
+                        <i class="fa-solid fa-box-open"></i> Produto
+                    </button>
+                    <button class="prod-tab" data-panel="panel-ofertas">
+                        <i class="fa-solid fa-tags"></i> Ofertas
+                    </button>
+                    <button class="prod-tab" data-panel="panel-specs">
+                        <i class="fa-solid fa-list-check"></i> Detalhes
+                    </button>
+                </div>
+
+                <!-- PAINEL: Produto -->
+                <div class="prod-tab-panel active" id="panel-produto">
+                    <div class="prod-grid">
+                        <div class="prod-card-main">
+                            <div class="prod-showcase">
+                                <img class="prod-main-img" id="prodImg"
+                                    src="https://cdn.discordapp.com/attachments/1487757066087960679/1490892095869944000/x9fvk6v.png?ex=69d5b4f7&is=69d46377&hm=5a6754b4574aeb57b67285aded2f8f257fa3a18c52196ab0f85e74e32f9777f7"
+                                    alt="Ignite V80">
+                                <span class="prod-tap-hint">clique para trocar sabor</span>
+                            </div>
+                            <div class="prod-flavor-display">
+                                <span class="pf-dot" id="pfDot"></span>
+                                <strong id="pfName">Acai Ice</strong>
+                                <span class="pf-tag" id="pfTag">Gelado · Frutado</span>
+                            </div>
+                            <div class="prod-quick-stats">
+                                <div class="pq-stat"><span class="pq-val">8000</span><span class="pq-lbl">Puffs</span></div>
+                                <div class="pq-stat"><span class="pq-val">18mL</span><span class="pq-lbl">Líquido</span></div>
+                                <div class="pq-stat"><span class="pq-val">50mg</span><span class="pq-lbl">Nicotina</span></div>
+                                <div class="pq-stat"><span class="pq-val">USB-C</span><span class="pq-lbl">Recarga</span></div>
+                            </div>
+                            <button class="prod-wpp-btn" id="prodAcquireBtn">
+                                <i class="fa-brands fa-whatsapp"></i> Comprar pelo WhatsApp
+                            </button>
+                        </div>
+                        <div class="prod-card-side">
+                            <div class="pcs-title">Sabores disponíveis</div>
+                            <div class="pcs-sub">Toque para selecionar</div>
+                            <div class="flavor-grid" id="fwrap"></div>
+                            <div class="pcs-hint" id="pcsHint">Selecione um sabor acima</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAINEL: Ofertas -->
+                <div class="prod-tab-panel" id="panel-ofertas">
+                    <div class="offers-section">
+                        <div class="offers-label-line">
+                            <span class="ofl-dot"></span>
+                            <span class="ofl-text">Ofertas</span>
+                        </div>
+                        <div class="offers-grid-new">
+                            <div class="of-card">
+                                <div class="of-qty">1 unidade</div>
+                                <div class="of-name">Unitário</div>
+                                <div class="of-price">
+                                    <span class="of-val">R$90</span>
+                                    <span class="of-unit">por unidade</span>
+                                </div>
+                                <div class="of-desc">Escolha qualquer sabor</div>
+                                <button class="of-buy acquire-btn" data-qty="1">
+                                    <i class="fa-brands fa-whatsapp"></i> Comprar 1 unidade
+                                </button>
+                            </div>
+                            <div class="of-card of-card-best">
+                                <div class="of-best-ribbon">melhor oferta</div>
+                                <div class="of-qty">2 unidades</div>
+                                <div class="of-name">Combo Duplo</div>
+                                <div class="of-price">
+                                    <span class="of-val gold">R$170</span>
+                                    <span class="of-unit">2 unidades</span>
+                                </div>
+                                <div class="of-desc">Sabores diferentes à escolha</div>
+                                <div class="of-save">Economia de R$10 no combo</div>
+                                <button class="of-buy of-buy-gold acquire-btn" data-qty="2">
+                                    <i class="fa-brands fa-whatsapp"></i> Comprar 2 unidades
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAINEL: Specs + Entrega -->
+                <div class="prod-tab-panel" id="panel-specs">
+                    <div class="specs-delivery-row">
+                        <div class="sd-card">
+                            <div class="sd-title"><i class="fa-solid fa-gauge-high"></i> Especificações</div>
+                            <div class="sd-grid">
+                                <div class="sd-item"><i class="fa-solid fa-wind"></i><span><strong>8000</strong> Puffs</span></div>
+                                <div class="sd-item"><i class="fa-solid fa-droplet"></i><span><strong>18mL</strong> Líquido</span></div>
+                                <div class="sd-item"><i class="fa-solid fa-battery-full"></i><span><strong>650mAh</strong> Bateria</span></div>
+                                <div class="sd-item"><i class="fa-solid fa-bolt"></i><span><strong>50mg</strong> Nicotina</span></div>
+                                <div class="sd-item"><i class="fa-solid fa-plug"></i><span><strong>USB-C</strong> Recarga</span></div>
+                                <div class="sd-item"><i class="fa-solid fa-gears"></i><span><strong>Mesh</strong> Coil Duplo</span></div>
+                            </div>
+                        </div>
+                        <div class="sd-card sd-delivery">
+                            <div class="sd-title"><i class="fa-solid fa-truck-fast"></i> Entrega</div>
+                            <div class="del-content">
+                                <div class="del-main">
+                                    <i class="fa-solid fa-truck-fast" style="font-size:28px;color:#22c55e"></i>
+                                    <div>
+                                        <div class="del-main-text">Entrega Grátis em Maringá</div>
+                                        <div class="del-main-sub">Seg a Dom — 9h às 22h</div>
+                                    </div>
+                                </div>
+                                <div class="del-badges">
+                                    <span class="del-badge"><i class="fa-solid fa-map-pin"></i> Maringá / PR</span>
+                                    <span class="del-badge"><i class="fa-solid fa-clock"></i> Rápida</span>
+                                    <span class="del-badge"><i class="fa-solid fa-shield-halved"></i> Segura</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /prod-frame-card -->
+        </section>
+
+        <!-- ========== CONTATO ========== -->
+        <section class="section section-contato" id="contato">
+            <div class="contato-frame">
+                <div class="section-header" data-animate>
+                    <span class="section-badge"><i class="fa-solid fa-headset"></i> Suporte</span>
+                    <h2 class="section-title">Fale <span class="gradient-text">Conosco</span></h2>
+                    <p class="section-desc">Atendimento VIP direto no WhatsApp.<br>Resposta em menos de 5 minutos!</p>
+                </div>
+
+                <div class="contact-wrapper" data-animate>
+                    <div class="contact-grid">
+                        <a href="https://wa.me/554499663436?text=Olá! Vim pelo site Junin Shop e quero saber mais sobre os pods Ignite V80!"
+                           target="_blank" rel="noopener noreferrer"
+                           class="contact-card whatsapp">
+                            <div class="card-glow-bg"></div>
+                            <div class="contact-top">
+                                <div class="contact-icon-wrap">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                    <span class="icon-ping"></span>
+                                </div>
+                                <div class="online-badge"><span class="online-dot"></span> Online agora</div>
+                            </div>
+                            <h3>WhatsApp VIP</h3>
+                            <p>Atendimento exclusivo — tire dúvidas, faça pedidos e receba ofertas em primeira mão!</p>
+                            <span class="contact-btn"><i class="fa-brands fa-whatsapp"></i> Iniciar Conversa</span>
+                            <div class="contact-features">
+                                <span><i class="fa-solid fa-bolt" style="color:#f59e0b"></i> Resposta rápida</span>
+                                <span><i class="fa-solid fa-shield-halved" style="color:#22c55e"></i> 100% Seguro</span>
+                                <span><i class="fa-solid fa-gift" style="color:#06b6d4"></i> Ofertas exclusivas</span>
+                            </div>
+                        </a>
+
+                        <a href="https://instagram.com/juninshop"
+                           target="_blank" rel="noopener noreferrer"
+                           class="contact-card instagram">
+                            <div class="card-glow-bg"></div>
+                            <div class="contact-top">
+                                <div class="contact-icon-wrap">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span class="icon-ping"></span>
+                                </div>
+                                <div class="online-badge"><span class="online-dot"></span> Ativo</div>
+                            </div>
+                            <h3>Instagram</h3>
+                            <p>Acompanhe novidades, sorteios e promoções — siga a gente e fique por dentro!</p>
+                            <span class="contact-btn"><i class="fa-brands fa-instagram"></i> Seguir no Insta</span>
+                            <div class="contact-features">
+                                <span><i class="fa-solid fa-camera" style="color:#f59e0b"></i> Fotos exclusivas</span>
+                                <span><i class="fa-solid fa-trophy" style="color:#22c55e"></i> Sorteios</span>
+                                <span><i class="fa-solid fa-percent" style="color:#06b6d4"></i> Cupons</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-info-strip" data-animate>
+                    <div class="info-item"><i class="fa-solid fa-clock"></i><span>Seg – Dom: <strong>9h às 22h</strong></span></div>
+                    <div class="info-strip-divider"></div>
+                    <div class="info-item"><i class="fa-solid fa-location-dot"></i><span><strong>Maringá</strong> – PR</span></div>
+                    <div class="info-strip-divider"></div>
+                    <div class="info-item"><i class="fa-solid fa-truck-fast"></i><span>Entrega <strong>Grátis</strong></span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fa-solid fa-fire-flame-curved"></i> Junin Shop</h3>
+                    <p>Pods Ignite V80 originais. Entrega grátis em Maringá.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="https://wa.me/554499663436" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://instagram.com/juninshop" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Junin Shop. Todos os direitos reservados.</p></div>
+        </footer>
+
+        <!-- ========== COOKIES ========== -->
+        <div class="cookie-banner" id="cookieBanner">
+            <div class="cookie-inner">
+                <div class="cookie-text">
+                    <h4><i class="fa-solid fa-cookie-bite"></i> Cookies</h4>
+                    <p>Usamos cookies para melhorar sua experiência no site.</p>
+                </div>
+                <div class="cookie-btn-wrap">
+                    <button class="btn-cookie btn-cookie-settings" id="cookieSettings"><i class="fa-solid fa-gear"></i> Opções</button>
+                    <button class="btn-cookie btn-cookie-accept" id="cookieAccept"><i class="fa-solid fa-check"></i> Aceitar</button>
+                </div>
+            </div>
+            <div class="cookie-settings-pnl" id="cookieSettingsPnl">
+                <div class="cookie-option">
+                    <span>Cookies essenciais (obrigatórios)</span>
+                    <div class="cookie-toggle required on"></div>
+                </div>
+                <div class="cookie-option">
+                    <span>Cookies de desempenho e análise</span>
+                    <div class="cookie-toggle" id="cookieAnalytics"></div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /page -->
+
+    <script src="app.js" defer></script>
+</body>
+</html>
