@@ -1,5 +1,5 @@
 /* =====================================================
-   JUNIN SHOP - JAVASCRIPT
+   JUNIN - JAVASCRIPT
    ===================================================== */
 (function(){
 'use strict';
@@ -331,11 +331,11 @@ function init(){
         var f=flavors[cur];
         qty = (typeof qty !== 'undefined') ? qty : zapQty;
         if(qty===0){
-            return 'Ola! Vim pelo site Junin Shop e quero saber mais sobre o Ignite V80 sabor '+f.name+' ('+f.tag+'). Pode me ajudar?';
+            return 'Ola! Vim pelo site Junin e quero saber mais sobre o Ignite V80 sabor '+f.name+' ('+f.tag+'). Pode me ajudar?';
         } else if(qty===1){
-            return 'Ola! Vim pelo site Junin Shop e quero comprar 1 unidade do Ignite V80 — sabor '+f.name+' ('+f.tag+').';
+            return 'Ola! Vim pelo site Junin e quero comprar 1 unidade do Ignite V80 — sabor '+f.name+' ('+f.tag+').';
         } else {
-            return 'Ola! Vim pelo site Junin Shop e quero o Combo Duplo (2 unidades): 1x '+f.name+' (+ outro sabor diferente). Como funciona a entrega?';
+            return 'Ola! Vim pelo site Junin e quero o Combo Duplo (2 unidades): 1x '+f.name+' (+ outro sabor diferente). Como funciona a entrega?';
         }
     }
 
