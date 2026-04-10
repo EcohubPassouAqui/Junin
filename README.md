@@ -27,8 +27,7 @@
 
 ```
 junin/
-  image/
-    ignitev80.png
+  ignitev80.png
   index.html   — Pagina principal
   main.css     — Estilos completos
   app.js       — Interatividade e animacoes canvas
