@@ -2,10 +2,13 @@
 
 ```md
 [ SITE 10/04/2026 ] 
++ Novo sabor
 + Melhorias interface site
 + Melhorias globe
 + Melhorias categoria produtos
 + Melhorias interface celular
+
+* Bugs removidos
 ```
 
 ```md
